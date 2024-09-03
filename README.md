@@ -1,4 +1,4 @@
-# Better Bitter
+# Better Bitter (`0.1.0+1.21.1`)
 
 Better Bitter is a mod about transforming ingredients into a variety of aesthetic, delicious, and useful recipes, including new beverages, foods, and potions. These recipes range from simple additions, such as alternative ingredients in potion recipes, seasonings and seasoning shakers for foods to add additional saturation points and potion effects, and more.
 
