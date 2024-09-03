@@ -15,8 +15,12 @@ Better Bitter is a mod about transforming ingredients into a variety of aestheti
 ### Dematerialization
 
 * Allows the entity to pass through solid blocks as if they were transparent.
-* Does not allow the entity to pass through [Obsidian](), nor blocks made of [Obsidian]().
+* Does not allow the entity to pass through [Obsidian](https://minecraft.wiki/w/Obsidian), nor blocks made of [Obsidian](https://minecraft.wiki/w/Obsidian).
 * Temporarily nullified by [Materialization *(Status Effect)*](#materialization).
+
+***
+The source code for this feature heavily references [the Phasing ability](https://github.com/apace100/apoli/blob/a417c4a2d5b1cfd3a972319c641e0b83443ab708/src/main/java/io/github/apace100/apoli/mixin/EntityMixin.java#L145) from the [Origins mod](https://modrinth.com/mod/origins).
+***
 
 ### Materialization
 
@@ -32,7 +36,7 @@ This potion is already in vanilla Minecraft. However, it's one of the far-lesser
 ## Elixirs
 
 [Elixirs](#elixirs) are just like any other potion, and are even compatible with mods that use vanilla potions. The differences between a Potion and an [elixir](#elixirs) aren't technical ones; the differences between them include:
-* An [elixir](#elixirs) requires a [Thick Potion *(Potion)*](#thick-potion) as a base, making an [Elixir](#elixirs) more expensive to brew than a Potion.
+* An [elixir](#elixirs) requires a [Thick Potion *(Potion)*](#thick-potion) as a base, making an [elixir](#elixirs) more expensive to brew than a Potion.
 * An [elixir](#elixirs) requires expensive *(and oftentimes rare)* ingredients, such as [Gilded Phantom Membrane (Item)*](#gilded-phantom-membrane).
 * An [elixir](#elixirs) beholds knowledge to the entity, enchanting them with a magical spell for a short period of time. These powers are far greater than those granted by a Potion.
 * The Status Effects of an [elixir](#elixirs) last much longer than the Status Effects of a Potion.
