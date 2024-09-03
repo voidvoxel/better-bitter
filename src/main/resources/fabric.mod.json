@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "betterbitter",
+  "version": "${version}",
+
+  "name": "Better Bitter",
+  "description": "Better Bitter is a mod about transforming ingredients into a variety of aesthetic, delicious, and useful recipes, including new beverages, foods, and potions. These recipes range from simple additions, such as alternative ingredients in potion recipes, seasonings and seasoning shakers for foods to add additional saturation points and potion effects, and more.",
+  "authors": [
+    "Ashlynn Juniper"
+  ],
+  "contact": {
+    "Ashlynn Juniper": "voidvoxel@voidvoxel.dev"
+  },
+
+  "license": "MPL-2.0",
+  "icon": "assets/betterbitter/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["dev.voidvoxel.betterbitter.client.BetterBitterClient"],
+    "main": ["dev.voidvoxel.betterbitter.BetterBitter"]
+  },
+
+  "mixins": [
+    "betterbitter.mixins.json"
+    ,{
+      "config": "betterbitter.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
