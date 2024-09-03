@@ -1,6 +1,5 @@
 package dev.voidvoxel.betterbitter.item
 
-import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
@@ -10,7 +9,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 
-class EnchantedPhantomMembraneItem : EnchantedBookItem(SETTINGS) {
+class EnchantedPhantomMembraneItem : Item(SETTINGS) {
     companion object {
         @JvmStatic
         val ENCHANTED_PHANTOM_MEMBRANE_ITEM = EnchantedPhantomMembraneItem()

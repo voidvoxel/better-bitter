@@ -1,21 +1,14 @@
 package dev.voidvoxel.betterbitter.item
 
-import net.fabricmc.fabric.api.item.v1.EnchantingContext
-import net.minecraft.enchantment.Enchantment
-import net.minecraft.item.BookItem
-import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.item.ToolItem
-import net.minecraft.item.ToolMaterials
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 
-class GildedPhantomMembraneItem : BookItem(SETTINGS) {
+class GildedPhantomMembraneItem : Item(SETTINGS) {
     companion object {
         @JvmStatic
         val GILDED_PHANTOM_MEMBRANE_ITEM = GildedPhantomMembraneItem()
