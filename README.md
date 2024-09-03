@@ -33,7 +33,7 @@ This potion is already in vanilla Minecraft. However, it's one of the far-lesser
 
 [Elixirs](#elixirs) are just like any other potion, and are even compatible with mods that use vanilla potions. The differences between a potion and an [elixir](#elixirs) aren't technical ones; the differences between them include:
 * An [elixir](#elixirs) requires a [Thick Potion *(Potion)*](#thick-potion) as a base, making an [elixir](#elixirs) more expensive to brew than a potion.
-* An [elixir](#elixirs) requires expensive *(and oftentimes rare)* ingredients, such as [Gilded Phantom Membrane (Item)*](#gilded-phantom-membrane).
+* An [elixir](#elixirs) requires expensive *(and oftentimes rare)* ingredients, such as [Gilded Phantom Membrane *(Item)*](#gilded-phantom-membrane).
 * An [elixir](#elixirs) beholds knowledge to the entity, enchanting them with a magical spell for a short period of time. These powers are far greater than those granted by a potion.
 * The Status Effects of an [elixir](#elixirs) last much longer than the Status Effects of a potion.
 
