@@ -1,0 +1,27 @@
+{
+  "description": "Ancient Knowledge",
+  "supported_items": [
+    "betterbitter:enchanted_phantom_membrane",
+    "betterbitter:gilded_phantom_membrane"
+  ],
+  "primary_items": [
+    "betterbitter:gilded_phantom_membrane"
+  ],
+  "weight": 1,
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 1
+  },
+  "max_cost": {
+    "base": 4,
+    "per_level_above_first": 2
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "any"
+  ],
+  "effects": {
+    "minecraft:attributes": []
+  }
+}
