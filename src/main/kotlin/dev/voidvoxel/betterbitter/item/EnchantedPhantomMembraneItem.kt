@@ -15,15 +15,11 @@ class EnchantedPhantomMembraneItem : Item(SETTINGS) {
         val ENCHANTED_PHANTOM_MEMBRANE_ITEM = EnchantedPhantomMembraneItem()
 
         @JvmStatic
-        val ENCHANTED_PHANTOM_MEMBRANE_ITEM_STACK = ItemStack(ENCHANTED_PHANTOM_MEMBRANE_ITEM)
-
-        @JvmStatic
         val SETTINGS: Settings
             get() {
                 val settings = Settings()
 
                 settings.rarity(Rarity.RARE)
-                settings.maxDamage(45)
 
                 return settings
             }
