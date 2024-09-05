@@ -1,3 +1,9 @@
+package dev.voidvoxel.betterbitter.model.entity;
+
+import net.minecraft.client.model.*;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 
 // Made with Blockbench 4.10.4
@@ -5,99 +11,11 @@ import net.minecraft.entity.Entity;
 // Paste this class into your mod and generate all required imports
 public class GildedPhantomModel extends EntityModel<Entity> {
 	private final ModelPart body;
-	private final ModelPart tail;
-	private final ModelPart leg;
-	private final ModelPart leg_left;
-	private final ModelPart leg_left_upper;
-	private final ModelPart leg_0;
-	private final ModelPart leg_left_1;
-	private final ModelPart leg_left_2;
-	private final ModelPart leg_left_3;
-	private final ModelPart leg_left_lower;
-	private final ModelPart leg_left_4;
-	private final ModelPart leg_left_5;
-	private final ModelPart leg_left_6;
-	private final ModelPart leg_left_7;
-	private final ModelPart leg_right;
-	private final ModelPart leg_left_upper3;
-	private final ModelPart leg_left_24;
-	private final ModelPart leg_left_25;
-	private final ModelPart leg_left_26;
-	private final ModelPart leg_left_27;
-	private final ModelPart leg_left_lower3;
-	private final ModelPart leg_left_28;
-	private final ModelPart leg_left_29;
-	private final ModelPart leg_left_30;
-	private final ModelPart leg_left_31;
-	private final ModelPart leg_right_upper3;
-	private final ModelPart leg_right_24;
-	private final ModelPart leg_right_25;
-	private final ModelPart leg_right_26;
-	private final ModelPart leg_right_27;
-	private final ModelPart leg_right_lower3;
-	private final ModelPart leg_right_28;
-	private final ModelPart leg_right_29;
-	private final ModelPart leg_right_30;
-	private final ModelPart leg_right_31;
-	private final ModelPart wing;
-	private final ModelPart wing_left_lower;
-	private final ModelPart leg_left_8;
-	private final ModelPart leg_left_9;
-	private final ModelPart leg_left_10;
-	private final ModelPart leg_left_11;
-	private final ModelPart wing_right_lower;
-	private final ModelPart leg_right_12;
-	private final ModelPart leg_right_13;
-	private final ModelPart leg_right_14;
-	private final ModelPart leg_right_15;
+
 	public GildedPhantomModel(ModelPart root) {
 		this.body = root.getChild("body");
-		this.tail = root.getChild("tail");
-		this.leg = root.getChild("leg");
-		this.leg_left = root.getChild("leg_left");
-		this.leg_left_upper = root.getChild("leg_left_upper");
-		this.leg_0 = root.getChild("leg_0");
-		this.leg_left_1 = root.getChild("leg_left_1");
-		this.leg_left_2 = root.getChild("leg_left_2");
-		this.leg_left_3 = root.getChild("leg_left_3");
-		this.leg_left_lower = root.getChild("leg_left_lower");
-		this.leg_left_4 = root.getChild("leg_left_4");
-		this.leg_left_5 = root.getChild("leg_left_5");
-		this.leg_left_6 = root.getChild("leg_left_6");
-		this.leg_left_7 = root.getChild("leg_left_7");
-		this.leg_right = root.getChild("leg_right");
-		this.leg_left_upper3 = root.getChild("leg_left_upper3");
-		this.leg_left_24 = root.getChild("leg_left_24");
-		this.leg_left_25 = root.getChild("leg_left_25");
-		this.leg_left_26 = root.getChild("leg_left_26");
-		this.leg_left_27 = root.getChild("leg_left_27");
-		this.leg_left_lower3 = root.getChild("leg_left_lower3");
-		this.leg_left_28 = root.getChild("leg_left_28");
-		this.leg_left_29 = root.getChild("leg_left_29");
-		this.leg_left_30 = root.getChild("leg_left_30");
-		this.leg_left_31 = root.getChild("leg_left_31");
-		this.leg_right_upper3 = root.getChild("leg_right_upper3");
-		this.leg_right_24 = root.getChild("leg_right_24");
-		this.leg_right_25 = root.getChild("leg_right_25");
-		this.leg_right_26 = root.getChild("leg_right_26");
-		this.leg_right_27 = root.getChild("leg_right_27");
-		this.leg_right_lower3 = root.getChild("leg_right_lower3");
-		this.leg_right_28 = root.getChild("leg_right_28");
-		this.leg_right_29 = root.getChild("leg_right_29");
-		this.leg_right_30 = root.getChild("leg_right_30");
-		this.leg_right_31 = root.getChild("leg_right_31");
-		this.wing = root.getChild("wing");
-		this.wing_left_lower = root.getChild("wing_left_lower");
-		this.leg_left_8 = root.getChild("leg_left_8");
-		this.leg_left_9 = root.getChild("leg_left_9");
-		this.leg_left_10 = root.getChild("leg_left_10");
-		this.leg_left_11 = root.getChild("leg_left_11");
-		this.wing_right_lower = root.getChild("wing_right_lower");
-		this.leg_right_12 = root.getChild("leg_right_12");
-		this.leg_right_13 = root.getChild("leg_right_13");
-		this.leg_right_14 = root.getChild("leg_right_14");
-		this.leg_right_15 = root.getChild("leg_right_15");
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -330,7 +248,7 @@ public class GildedPhantomModel extends EntityModel<Entity> {
 	public void setAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 	}
 	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		body.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, int color) {
+		body.render(matrices, vertexConsumer, light, overlay, color);
 	}
 }
