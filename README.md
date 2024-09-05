@@ -1,16 +1,21 @@
 # Better Bitter
 
-![Download Count](https://img.shields.io/github/downloads/voidvoxel/better-bitter/total)
+[![Download Count](https://img.shields.io/github/downloads/voidvoxel/better-bitter/total)](https://github.com/voidvoxel/better-bitter/releases/latest)
 
-Better Bitter is a mod about transforming ingredients into a variety of aesthetic, delicious, and useful recipes, including new beverages, foods, and potions. These recipes range from simple additions, such as alternative ingredients in potion recipes, seasonings and seasoning shakers for foods to add additional saturation points and potion effects, and more.
+Better Bitter adds new items, ingredients, foods, potions, creatures, and more. For more information, please refer to [the official wiki](https://github.com/voidvoxel/better-bitter/wiki).
 
-## [Wiki](https://github.com/voidvoxel/better-bitter/wiki)
+## Links
+
+* [Discord](https://discord.gg/Gh5nzTQrNf)
+* [GitHub](https://github.com/voidvoxel/better-bitter)
+* [Modrinth](https://modrinth.com/mod/better-bitter)
+* [Wiki](https://github.com/voidvoxel/better-bitter/wiki)
 
 ## Installation
 
 ### Manual
 
-Download the `.jar` file from the Releases page and place it into your `.minecraft/mods/` folder.
+[Download the `.jar` file](https://github.com/voidvoxel/better-bitter/releases/latest) and place it into your `.minecraft/mods/` folder.
 
 ## Requirements
 
