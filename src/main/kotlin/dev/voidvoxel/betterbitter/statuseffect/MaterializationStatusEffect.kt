@@ -13,9 +13,9 @@ import net.minecraft.util.Identifier
 class MaterializationStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 0xdfba2b) {
     companion object {
         @JvmStatic
-        val BASE_DURATION: Int = 900
+        val BASE_DURATION: Int = 3600
         @JvmStatic
-        val EXTENDED_DURATION: Int = BASE_DURATION * 2
+        val EXTENDED_DURATION: Int = 9600
 
         @JvmStatic
         val MATERIALIZATION_STATUS_EFFECT: StatusEffect = MaterializationStatusEffect()

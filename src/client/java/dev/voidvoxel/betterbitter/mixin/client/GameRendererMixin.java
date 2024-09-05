@@ -1,8 +1,9 @@
-package dev.voidvoxel.betterbitter.mixin;
+package dev.voidvoxel.betterbitter.mixin.client;
 
 import dev.voidvoxel.betterbitter.api.EntityHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.AirBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
@@ -49,8 +50,8 @@ public class GameRendererMixin {
         assert client.world != null;
 
         // TODO: Invert this `!` if necessary.
-        if (!EntityHelper.hasPhysicalForm(cameraFocusedEntity)) {
-            Set<BlockPos> eyePositions = getEyePos();
+        if (cameraFocusedEntity != null && EntityHelper.hasAncientKnowledge(cameraFocusedEntity)) {
+            Set<BlockPos> eyePositions = getEyePos(8, 4, 8);
             Set<BlockPos> noLongerEyePositions = new HashSet<>();
 
             for (BlockPos p : savedStates.keySet()) {
@@ -70,7 +71,7 @@ public class GameRendererMixin {
 
                 if (!savedStates.containsKey(p) && !client.world.isAir(p) && !(stateAtP.getBlock() instanceof FluidBlock)) {
                     savedStates.put(p, stateAtP);
-                    client.world.setBlockState(p, Blocks.AIR.getDefaultState());
+                    client.world.setBlockState(p, Blocks.GLOWSTONE.getDefaultState());
                 }
             }
         } else if (!savedStates.isEmpty()) {
@@ -86,8 +87,10 @@ public class GameRendererMixin {
 
     @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;update(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;ZZF)V"), method = "renderWorld")
     private void preventThirdPerson(Camera camera, BlockView area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickDelta) {
+        Entity cameraFocusedEntity = camera.getFocusedEntity();
+
         // TODO: Invert this `!` if necessary.
-        if (!EntityHelper.hasPhysicalForm(camera.getFocusedEntity())) {
+        if (cameraFocusedEntity != null && !EntityHelper.hasPhysicalForm(cameraFocusedEntity) && EntityHelper.isVisionCovered(cameraFocusedEntity)) {
             camera.update(area, focusedEntity, false, false, tickDelta);
         } else {
             camera.update(area, focusedEntity, thirdPerson, inverseView, tickDelta);

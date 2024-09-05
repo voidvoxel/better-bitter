@@ -1,4 +1,4 @@
-package dev.voidvoxel.betterbitter.mixin;
+package dev.voidvoxel.betterbitter.mixin.client;
 
 import dev.voidvoxel.betterbitter.api.EntityHelper;
 import net.fabricmc.api.EnvType;

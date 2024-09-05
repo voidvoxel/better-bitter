@@ -1,7 +1,6 @@
 package dev.voidvoxel.betterbitter.potion
 
 import dev.voidvoxel.betterbitter.statuseffect.BetterBitterStatusEffects
-import dev.voidvoxel.betterbitter.statuseffect.DematerializationStatusEffect
 import dev.voidvoxel.betterbitter.statuseffect.MaterializationStatusEffect
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.potion.Potion
@@ -13,7 +12,7 @@ import net.minecraft.util.Identifier
 class MaterializationPotion(isExtended: Boolean = false) : Potion(
     StatusEffectInstance(
         BetterBitterStatusEffects.MATERIALIZATION,
-        if (isExtended) DematerializationStatusEffect.EXTENDED_DURATION else DematerializationStatusEffect.BASE_DURATION,
+        if (isExtended) MaterializationStatusEffect.EXTENDED_DURATION else MaterializationStatusEffect.BASE_DURATION,
         0
     )
 ) {

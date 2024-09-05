@@ -4,6 +4,8 @@
   "package": "dev.voidvoxel.betterbitter.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "GameRendererMixin",
+    "InGameOverlayRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
