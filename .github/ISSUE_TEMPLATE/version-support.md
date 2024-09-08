@@ -7,8 +7,8 @@ assignees: voidvoxel
 
 ---
 
-**Version**
+**Version** ***(Required)***
 1.22.2
 
-**Is this a backport?** ***(yes or no)***
+**Is this a backport (yes or no)?** ***(Required)***
 no
