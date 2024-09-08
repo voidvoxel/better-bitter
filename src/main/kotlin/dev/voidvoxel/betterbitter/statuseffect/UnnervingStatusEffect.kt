@@ -1,5 +1,7 @@
 package dev.voidvoxel.betterbitter.statuseffect
 
+import dev.voidvoxel.betterbitter.api.EntityHelper
+import dev.voidvoxel.betterbitter.potion.FearPotion
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.ai.TargetPredicate
 import net.minecraft.entity.effect.StatusEffect
@@ -16,7 +18,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.math.Box
 
 
-class AncientKnowledgeStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 0x6c6cb7) {
+class UnnervingStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 0x6c6cb7) {
     companion object {
         @JvmStatic
         val BASE_DURATION: Int = 900
@@ -28,37 +30,25 @@ class AncientKnowledgeStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 
         val AMPLIFIED_DURATION: Int = BASE_DURATION / 2
 
         @JvmStatic
-        val ANCIENT_KNOWLEDGE_STATUS_EFFECT: StatusEffect = AncientKnowledgeStatusEffect()
+        val UNNERVING_STATUS_EFFECT: StatusEffect = UnnervingStatusEffect()
 
         @JvmStatic
-        var ANCIENT_KNOWLEDGE_STATUS_EFFECT_REGISTRY_ENTRY: RegistryEntry<StatusEffect>? = null
+        var UNNERVING_STATUS_EFFECT_REGISTRY_ENTRY: RegistryEntry<StatusEffect>? = null
 
         @JvmStatic
         fun initialize() {
-            Registry.register(Registries.STATUS_EFFECT, Identifier.of("betterbitter", "ancient_knowledge"), ANCIENT_KNOWLEDGE_STATUS_EFFECT)
-            ANCIENT_KNOWLEDGE_STATUS_EFFECT_REGISTRY_ENTRY = Registries.STATUS_EFFECT.getEntry(ANCIENT_KNOWLEDGE_STATUS_EFFECT)
+            Registry.register(Registries.STATUS_EFFECT, Identifier.of("betterbitter", "unnerving"), UNNERVING_STATUS_EFFECT)
+            UNNERVING_STATUS_EFFECT_REGISTRY_ENTRY = Registries.STATUS_EFFECT.getEntry(UNNERVING_STATUS_EFFECT)
         }
     }
 
     override fun canApplyUpdateEffect(duration: Int, amplifier: Int): Boolean {
-        return true
+        return duration % (40 / amplifier) == 0
     }
 
     override fun applyUpdateEffect(entity: LivingEntity?, amplifier: Int): Boolean {
         if (entity == null)
             return false
-
-        if (Math.random() <= (0.01 * amplifier)) {
-            // Apply absorption.
-            entity.removeStatusEffect(StatusEffects.ABSORPTION)
-            entity.addStatusEffect(
-                StatusEffectInstance(
-                    StatusEffects.ABSORPTION,
-                    20,
-                    amplifier
-                )
-            )
-        }
 
         val eyePosition = entity.eyePos
         val world = entity.world
@@ -78,6 +68,8 @@ class AncientKnowledgeStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 
             EntityPredicates.VALID_LIVING_ENTITY
         )
 
+        EntityHelper.playAmbientHuntingSound(entity)
+
         for (nearbyEntity in nearbyEntities) {
             if (nearbyEntity == entity || nearbyEntity.equals(entity))
                 continue
@@ -92,11 +84,9 @@ class AncientKnowledgeStatusEffect : StatusEffect(StatusEffectCategory.NEUTRAL, 
                     continue
             }
 
-            nearbyEntity.removeStatusEffect(StatusEffects.GLOWING)
-            nearbyEntity.addStatusEffect(StatusEffectInstance(StatusEffects.GLOWING, 20 * (1 + amplifier)), entity)
-
-            nearbyEntity.removeStatusEffect(StatusEffects.WIND_CHARGED)
-            nearbyEntity.addStatusEffect(StatusEffectInstance(StatusEffects.WIND_CHARGED, 20 * (1 + amplifier), amplifier), entity)
+            if (!nearbyEntity.hasStatusEffect(BetterBitterStatusEffects.FEAR)) {
+                EntityHelper.scare(nearbyEntity, amplifier)
+            }
         }
 
         return super.applyUpdateEffect(entity, amplifier)

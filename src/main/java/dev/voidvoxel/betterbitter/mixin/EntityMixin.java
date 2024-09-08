@@ -2,11 +2,14 @@ package dev.voidvoxel.betterbitter.mixin;
 
 import dev.voidvoxel.betterbitter.api.EntityHelper;
 import dev.voidvoxel.betterbitter.api.MovingEntity;
+import dev.voidvoxel.betterbitter.statuseffect.BetterBitterStatusEffects;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.math.BlockPos;
@@ -95,6 +98,28 @@ public abstract class EntityMixin implements MovingEntity {
         betterBitter$property$isMovingHorizontally = betterBitter$property$isMovingVertically = false;
     }
 
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void betterBitter$applyFear(CallbackInfo callbackInfo) {
+        Entity entity = (Entity)(Object)this;
+
+        if (entity instanceof PlayerEntity livingEntity) {
+            BlockPos blockPos = entity.getBlockPos();
+
+            int preyLightLevel = world.getLightLevel(blockPos);
+            int preyPositionY = blockPos.getY();
+
+            if (
+                    (preyPositionY < 0 || (
+                            preyPositionY < 48 && preyLightLevel == 0
+                    )) && !(livingEntity.hasStatusEffect(StatusEffects.NIGHT_VISION))
+            ) {
+                if (Math.random() <= 0.001) {
+                    EntityHelper.scare(livingEntity);
+                }
+            }
+        }
+    }
+
     @Inject(method = "baseTick", at = @At("TAIL"))
     private void betterBitter$setMovementProperties(CallbackInfo callbackInfo) {
         if (betterBitter$property$previousPosition == null) {
@@ -120,12 +145,21 @@ public abstract class EntityMixin implements MovingEntity {
 
     @Redirect(method = "method_30022", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getCollisionShape(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/shape/VoxelShape;"))
     private VoxelShape preventPhasingSuffocation(BlockState state, BlockView world, BlockPos pos) {
-        return state.getCollisionShape(world, pos, ShapeContext.of((Entity)(Object)this));
+        Entity entity = (Entity)(Object)this;
+
+        if (entity instanceof LivingEntity livingEntity) {
+            if (Math.random() <= 0.001) {
+                EntityHelper.applyHauntStatusEffects(livingEntity);
+            }
+        }
+
+        return state.getCollisionShape(world, pos, ShapeContext.of(entity));
     }
 
     @Override
     public boolean betterBitter$isMoving() {
-        return betterBitter$property$isMovingHorizontally || betterBitter$property$isMovingVertically;
+        return betterBitter$property$isMovingHorizontally
+                || betterBitter$property$isMovingVertically;
     }
 
     @Override
